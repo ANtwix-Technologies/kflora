@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  /* ---- Color tokens: pulled from the KFlora mark ---- */
+  --color-ink: #201613;
+  --color-paper: #faf4ec;
+  --color-paper-deep: #f1e6d6;
+  --color-red: #b3212a;
+  --color-red-deep: #7a1620;
+  --color-red-bright: #d43b3f;
+  --color-sage: #6e7a5c;
+  --color-sage-deep: #4d5740;
+  --color-blush: #e9c6b8;
+  --color-gold: #a9814a;
+
+  /* ---- Type tokens ---- */
+  --font-display: 'Fraunces', ui-serif, Georgia, serif;
+  --font-body: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bloom {
+  from {
+    opacity: 0;
+    transform: scale(0.7) rotate(-6deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-red);
+  color: var(--color-paper);
+}
+
+/* Subtle paper grain so the ivory backdrop doesn't feel flat/digital */
+.grain-bg {
+  position: relative;
+}
+.grain-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.tracking-label {
+  letter-spacing: 0.28em;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bloom {
+  opacity: 0;
+  transform: scale(0.7) rotate(-6deg);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.bloom.is-visible {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
