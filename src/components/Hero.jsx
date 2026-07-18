@@ -17,9 +17,8 @@ export default function Hero() {
           and so the text in front of it stays legible */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-r from-paper via-paper/85 to-paper/50"
+        className="absolute inset-0 bg-gradient-to-r from-paper/60 via-paper/35 to-paper/10"
       />
-      <div aria-hidden="true" className="absolute inset-0 bg-paper/25" />
       <div aria-hidden="true" className="grain-bg absolute inset-0" />
 
       <div className="relative mx-auto w-full max-w-6xl px-6 md:px-10 lg:pl-24">
